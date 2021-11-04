@@ -1,12 +1,12 @@
 #######################################
-# Syntax Coloring Map For SPIFFSReadServer Library
+# Syntax Coloring Map For LittleFSReadServer Library
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
 
-SPIFFSReadServer	KEYWORD1
+LittleFSReadServer	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
