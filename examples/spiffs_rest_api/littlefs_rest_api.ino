@@ -14,20 +14,21 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266SSDP.h>
 
-//extension of ESP8266WebServer with SPIFFS handlers built in
-#include <SPIFFSReadServer.h> // http://ryandowning.net/SPIFFSReadServer
+//extension of ESP8266WebServer with LittleFS handlers built in
+#include <LittleFSReadServer.h> // https://github.com/ogursoft/LittleFSReadServer
 // upload data folder to chip with Arduino ESP8266 filesystem uploader
 // https://github.com/esp8266/arduino-esp8266fs-plugin
 
 #include <DNSServer.h>
 #include <FS.h>
+#include <LittleFS.h>
 
 #define DEVICE_NAME "ESP8266 DEVICE"
 
 
 //server objects
 //just use this instead of "ESP8266WebServer server(80);"
-SPIFFSReadServer server(80);
+LittleFSReadServer server(80);
 DNSServer dnsServer;
 PersWiFiManager persWM(server, dnsServer);
 
@@ -51,8 +52,8 @@ void setup() {
     DEBUG_PRINT(persWM.getApSsid());
   });
 
-  //allows serving of files from SPIFFS
-  SPIFFS.begin();
+  //allows serving of files from LittleFS
+  LittleFS.begin();
   //sets network name for AP mode
   persWM.setApCredentials(DEVICE_NAME);
   //persWM.setApCredentials(DEVICE_NAME, "password"); optional password
